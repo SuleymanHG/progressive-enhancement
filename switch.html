@@ -1,23 +1,81 @@
 <!doctype html>
 <html lang="nl">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width">
-		<title>Switch control / Progressive Enhancement / FDND</title>
-		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-		<link href="assets/styles.css" rel="stylesheet">
-		<style>
-			/* Schrijf hier gewoon je CSS voor dit component */
 
-			/* Hint: Dit component kun je volledig met HTML en CSS bouwen */
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Switch control / Progressive Enhancement / FDND</title>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+		rel="stylesheet">
+	<link href="assets/styles.css" rel="stylesheet">
+	<style>
+		.switch {
+			position: relative;
+			display: inline-block;
+			width: 60px;
+			height: 34px;
+		}
 
-			/* Hint: Hoe ver ga je qua styling? Vraag jezelf dit altijd af */
-		</style>
-	</head>
-	<body>
-		<h1>Switch control</h1>
-		
-		<!-- Hint: Safari heeft hiervoor iets bedacht, maar is dat al een standaard?
+		.switch input {
+			opacity: 0;
+			width: 0;
+			height: 0;
+		}
+
+		.slider {
+			position: absolute;
+			cursor: pointer;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: #ccc;
+			transition: 0.4s;
+			border-radius: 34px;
+		}
+
+		/* The moving circle (knob) */
+		.slider:before {
+			position: absolute;
+			content: "";
+			height: 26px;
+			width: 26px;
+			left: 4px;
+			bottom: 4px;
+			background-color: white;
+			transition: 0.4s;
+			border-radius: 50%;
+			/* Centering text inside the knob */
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 12px;
+			font-weight: bold;
+			color: black;
+		}
+
+		/* Change the background of the slider when checked */
+		input:checked+.slider {
+			background-color: #5be1b7;
+		}
+
+		/* When checked, move the knob and add the text "aan" */
+		input:checked+.slider:before {
+			transform: translateX(26px);
+			content: "aan";
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Switch control</h1>
+
+
+	<label class="switch">
+		<input type="checkbox">
+		<span class="slider"></span>
+	</label>
+	<!-- Hint: Safari heeft hiervoor iets bedacht, maar is dat al een standaard?
 		     Wat gebeurt er in browsers die dat nog niet ondersteunen? -->
 
 	<details>
